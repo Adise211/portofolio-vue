@@ -27,6 +27,12 @@
           <v-list-item-title>Contact</v-list-item-title>
         </v-list-item>
         <v-divider></v-divider>
+        <v-list-item class="nav-item">
+          <div>
+            <v-icon class="mr-1" @click="goToLinkedIn">mdi-linkedin</v-icon>
+            <v-icon class="ml-1" @click="goToGithub">mdi-github</v-icon>
+          </div>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -74,6 +80,12 @@ export default {
           behavior: 'smooth',
         })
       }
+    },
+    goToLinkedIn() {
+      window.open('https://www.linkedin.com/in/adise-mamoye-15876a240')
+    },
+    goToGithub() {
+      window.open('https://github.com/Adise211')
     },
   },
   computed: {
