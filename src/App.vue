@@ -39,23 +39,36 @@
     <!-- Main Content -->
     <v-main>
       <v-container>
-        <section id="about">
-          <h1>About Me</h1>
+        <section id="about" class="mt-10 ml-10 d-flex flex-column justify-start">
+          <div class="text-h2">Hi,</div>
+          <div class="text-h2">I'm Adise</div>
+          <div class="intro-title text-h3 mt-5">
+            <div class="intro-title-wrapper">
+              <div className="intro-title-item">Full Stack Developer</div>
+              <div className="intro-title-item">Web Developer</div>
+              <div className="intro-title-item">Frontend Developer</div>
+              <div className="intro-title-item">Backend Developer</div>
+            </div>
+          </div>
+          <div class="into-description text-h5 pt-10 mt-16 text-center w-75 align-self-center">
+            I develop and design applications that are intuitive, functional, and visually
+            appealing, with a focus on creating exceptional user experiences
+          </div>
           <!-- Add your content here -->
         </section>
 
         <section id="projects">
-          <h1>Projects</h1>
+          <!-- <h1>Projects</h1> -->
           <!-- Add your content here -->
         </section>
 
         <section id="skills">
-          <h1>Skills</h1>
+          <!-- <h1>Skills</h1> -->
           <!-- Add your content here -->
         </section>
 
         <section id="contact">
-          <h1>Contact</h1>
+          <!-- <h1>Contact</h1> -->
           <!-- Add your content here -->
         </section>
       </v-container>
@@ -98,6 +111,40 @@ export default {
 </script>
 
 <style>
+.intro-title {
+  height: 50px;
+  overflow: hidden;
+}
+
+.intro-title-wrapper {
+  height: 100%;
+  animation: move 10s ease-in-out infinite alternate;
+}
+
+@keyframes move {
+  25% {
+    transform: translateY(-50px);
+  }
+  50% {
+    transform: translateY(-100px);
+  }
+  75% {
+    transform: translateY(-150px);
+  }
+  100% {
+    transform: translateY(-200px);
+  }
+}
+
+.intro-title-item {
+  height: 50px;
+  /* font-size: 30px; */
+  font-weight: bold;
+  color: greenyellow;
+  display: flex;
+  align-items: center;
+}
+
 /* You can customize your App Bar styling here */
 .v-toolbar-title {
   font-weight: bold;
