@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid style="height: 100vh">
+  <v-container fluid class="fill-height">
     <v-row class="align-center justify-center fill-height">
       <template v-for="(item, i) in projects" :key="i">
         <v-col cols="12" md="6">
@@ -9,23 +9,8 @@
               :elevation="isHovering ? 12 : 2"
               v-bind="props"
             >
-              <v-img :src="item.img" height="250px" max-height="250px" cover>
-                <!-- <v-card-title class="text-h6 text-black d-flex flex-column">
-                  <p class="mt-4">
-                    {{ item.title }}
-                  </p>
-
-                  <div>
-                    <p class="ma-0 text-body-1 font-weight-bold">
-                      {{ item.text }}
-                    </p>
-                    <p class="text-caption font-weight-medium">
-                      {{ item.subtext }}
-                    </p>
-                  </div>
-                </v-card-title> -->
-              </v-img>
-              <v-card-text>
+              <v-img :src="item.img" height="250px" max-height="250px" cover> </v-img>
+              <v-card-text style="height: 50vh; max-height: 50vh">
                 <div class="project-title mb-5">
                   <p class="text-h6">{{ item.title }}</p>
                   <p class="text-body-1 font-weight-bold">{{ item.text }}</p>
@@ -42,7 +27,7 @@
                     {{ tool }}
                   </v-chip>
                 </div>
-                <div class="project-sources text-end">
+                <div class="project-sources position-absolute right-0 bottom-0 text-end mb-4 mr-4">
                   <v-icon @click="goToProjectSource(item.sources.github)">mdi-github</v-icon>
                   <v-icon @click="goToProjectSource(item.sources.web)">mdi-web</v-icon>
                 </div>
@@ -85,7 +70,10 @@ export default {
         {
           title: 'Comming Soon!',
           text: `Stay tuned...`,
+          description:
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad commodi blanditiis dolor praesentium incidunt expedita nulla officia quibusdam, dolorum alias? Corporis voluptatem modi expedita iusto quos molestiae dolores ex libero.',
           img: 'https://cdn.vuetifyjs.com/docs/images/cards/hands.jpg',
+          tools: ['Javascript'],
         },
       ]
     },
