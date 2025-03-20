@@ -1,5 +1,5 @@
 <template>
-  <v-app theme="light">
+  <v-app :theme="isDarkMode ? 'dark' : 'light'">
     <!-- Drawer for Mobile View -->
     <v-navigation-drawer app permanent>
       <v-list dense>
@@ -12,7 +12,6 @@
           <v-list-item-title>About</v-list-item-title>
         </v-list-item>
         <v-divider></v-divider>
-
         <v-list-item @click="scrollToSection('projects')" class="nav-item">
           <v-list-item-title>Projects</v-list-item-title>
         </v-list-item>
@@ -34,6 +33,16 @@
           </div>
         </v-list-item>
       </v-list>
+      <v-spacer></v-spacer>
+      <v-switch
+        v-model="isDarkMode"
+        class="d-flex justify-center mt-10"
+        size="small"
+        append-icon="mdi-weather-night"
+        prepend-icon="mdi-weather-sunny"
+        density="compact"
+        hide-details
+      ></v-switch>
     </v-navigation-drawer>
 
     <!-- Main Content -->
@@ -47,7 +56,7 @@
           <div class="text-h2">Hi,</div>
           <div class="text-h2">I'm Adise</div>
           <div class="intro-title text-h3 mt-5">
-            <div class="intro-title-wrapper">
+            <div class="intro-title-wrapper text-light-green">
               <div className="intro-title-item">Full Stack Developer</div>
               <div className="intro-title-item">Web Developer</div>
               <div className="intro-title-item">Frontend Developer</div>
@@ -61,7 +70,12 @@
 
           <v-row class="d-flex justify-center mt-7">
             <v-col cols="auto">
-              <v-btn class="mx-2 rounded-xl" color="black" size="large">View Projucts</v-btn>
+              <v-btn
+                class="mx-2 rounded-xl"
+                :color="isDarkMode ? 'light-green' : 'black'"
+                size="large"
+                >View Projucts</v-btn
+              >
               <v-btn class="mx-2 rounded-xl" variant="outlined" size="large">Contact Me</v-btn>
             </v-col>
           </v-row>
@@ -74,8 +88,6 @@
 
         <section id="projects">
           <AppProjects></AppProjects>
-          <!-- <h1>Projects</h1> -->
-          <!-- Add your content here -->
         </section>
 
         <section id="skills">
@@ -99,7 +111,7 @@ export default {
   components: { AppProjects },
   data() {
     return {
-      darkMode: false, // Dark Mode toggle
+      isDarkMode: false, // Dark Mode toggle
     }
   },
   mounted() {},
@@ -159,7 +171,7 @@ export default {
   height: 50px;
   /* font-size: 30px; */
   font-weight: bold;
-  color: greenyellow;
+  /* color: yellowgreen; */
   display: flex;
   align-items: center;
 }
