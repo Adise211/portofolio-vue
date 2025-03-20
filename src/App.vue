@@ -74,9 +74,16 @@
                 class="mx-2 rounded-xl"
                 :color="isDarkMode ? 'light-green' : 'black'"
                 size="large"
-                >View Projucts</v-btn
+                @click="scrollToSection('projects')"
+                >View Projects</v-btn
               >
-              <v-btn class="mx-2 rounded-xl" variant="outlined" size="large">Contact Me</v-btn>
+              <v-btn
+                class="mx-2 rounded-xl"
+                variant="outlined"
+                size="large"
+                @click="scrollToSection('contact')"
+                >Contact Me</v-btn
+              >
             </v-col>
           </v-row>
           <v-row class="d-flex justify-center mt-5">
