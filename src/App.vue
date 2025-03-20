@@ -1,10 +1,11 @@
 <template>
-  <v-app>
+  <v-app theme="light">
     <!-- Drawer for Mobile View -->
     <v-navigation-drawer app permanent>
       <v-list dense>
-        <v-list-item height="30vh" class="d-flex align-center justify-center">
-          <div class="text-h5">Adise Mamoye</div>
+        <v-list-item height="35vh" class="d-flex align-center justify-center">
+          <v-img width="300%" height="300%" cover :src="profilePhoto" rounded="circle"></v-img>
+          <div class="text-h5 mt-4">Adise Mamoye</div>
         </v-list-item>
         <v-divider></v-divider>
         <v-list-item @click="scrollToSection('about')" class="nav-item">
@@ -63,6 +64,7 @@ export default {
       darkMode: false, // Dark Mode toggle
     }
   },
+  mounted() {},
   methods: {
     scrollToSection(section) {
       const element = document.getElementById(section)
@@ -74,6 +76,12 @@ export default {
       }
     },
   },
+  computed: {
+    profilePhoto() {
+      return 'images/profile_photo.png'
+    },
+  },
+  watch: {},
 }
 </script>
 
