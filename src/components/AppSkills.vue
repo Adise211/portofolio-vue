@@ -8,7 +8,8 @@
               :elevation="isHovering ? 12 : 5"
               v-bind="props"
               class="bg-grey-lighten-3"
-              :height="isMobile ? '75vh' : ''"
+              :min-height="isMobile ? '50vh' : ''"
+              :max-height="isMobile ? '70vh' : ''"
             >
               <v-card-title class="text-center">
                 {{ group.groupTitle }}
@@ -63,9 +64,9 @@ export default {
             { name: 'HTML/CSS', value: '95%' },
             { name: 'Javascript', value: '95%' },
             { name: 'Vue.js', value: '98%' },
-            { name: 'React.js', value: '70%' },
+            { name: 'React.js', value: '85%' },
             { name: 'Vuetify', value: '95%' },
-            { name: 'Bootstrap', value: '60%' },
+            { name: 'Bootstrap', value: '75%' },
           ],
         },
         {
@@ -73,10 +74,10 @@ export default {
 
           items: [
             { name: 'Node.js', value: '80%' },
-            { name: 'Express', value: '65%' },
+            { name: 'Express', value: '75%' },
             { name: 'PostgreSQL', value: '80%' },
             { name: 'Axios', value: '90%' },
-            { name: 'SQL', value: '90%' },
+            { name: 'SQL', value: '98%' },
           ],
         },
         {

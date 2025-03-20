@@ -7,7 +7,8 @@
             <v-card
               :class="{ 'on-hover': isHovering, 'bg-grey-lighten-3': isDarkMode }"
               :elevation="isMobile ? (isHovering ? 12 : 2) : 5"
-              :height="isMobile ? '130vh' : ''"
+              :max-height="isMobile ? '140vh' : ''"
+              :min-height="isMobile ? '110vh' : ''"
               v-bind="props"
             >
               <v-img :src="item.img" height="250px" max-height="250px" cover> </v-img>

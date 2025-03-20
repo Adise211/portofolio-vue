@@ -6,7 +6,8 @@
         <v-card
           elevation="5"
           :class="{ 'bg-grey-lighten-3': isDarkMode }"
-          :height="isMobile ? '108vh' : ''"
+          :max-height="isMobile ? '108vh' : ''"
+          :min-height="isMobile ? '85vh' : ''"
         >
           <v-card-title class="text-h5 mb-5 font-weight-bold">Send Me A Message</v-card-title>
           <v-card-text style="height: 70vh">
