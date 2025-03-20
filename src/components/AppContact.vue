@@ -11,37 +11,62 @@
         >
           <v-card-title class="text-h5 mb-5 font-weight-bold">Send Me A Message</v-card-title>
           <v-card-text style="height: 70vh">
-            <v-row>
-              <v-col cols="12" md="6">
-                <v-text-field label="Your Name" variant="outlined"></v-text-field>
-              </v-col>
-              <v-col cols="12" md="6">
-                <v-text-field label="Email" variant="outlined"></v-text-field>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" md="10">
-                <v-text-field label="Subject" variant="outlined"></v-text-field>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-col cols="12" md="10">
-                <v-textarea label="Your message here..." variant="outlined"></v-textarea>
-              </v-col>
-            </v-row>
-            <v-row>
-              <v-btn
-                class="mx-2 rounded-xl mt-5 ml-3"
-                :color="isDarkMode ? 'light-green' : 'black'"
-                size="large"
-                >Send Message</v-btn
-              >
-            </v-row>
+            <v-form ref="form" id="form">
+              <v-row>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="name"
+                    label="Your Name"
+                    variant="outlined"
+                    type="text"
+                    name="user_nam"
+                  ></v-text-field>
+                </v-col>
+                <v-col cols="12" md="6">
+                  <v-text-field
+                    v-model="email"
+                    label="Email"
+                    variant="outlined"
+                    type="email"
+                    name="user_email"
+                  ></v-text-field>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" md="10">
+                  <v-text-field
+                    v-model="subject"
+                    label="Subject"
+                    variant="outlined"
+                    type="text"
+                    name="title"
+                  ></v-text-field>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-col cols="12" md="10">
+                  <v-textarea
+                    v-model="message"
+                    label="Your message here..."
+                    variant="outlined"
+                    name="message"
+                  ></v-textarea>
+                </v-col>
+              </v-row>
+              <v-row>
+                <v-btn
+                  class="mx-2 rounded-xl mt-5 ml-3"
+                  :color="isDarkMode ? 'light-green' : 'black'"
+                  size="large"
+                  @click.prevent="sendMessage"
+                  >Send Message</v-btn
+                >
+              </v-row>
+            </v-form>
           </v-card-text>
         </v-card>
       </v-col>
       <!-- Personal Info -->
-
       <v-col cols="12" md="4">
         <v-card elevation="5" class="bg-grey-lighten-3">
           <v-card-title class="text-h5 font-weight-bold">Contact Information</v-card-title>
@@ -99,6 +124,8 @@
 </template>
 
 <script>
+const emailJs = window.emailjs
+
 export default {
   components: {},
   props: {
@@ -111,10 +138,37 @@ export default {
       default: false,
     },
   },
-  data: () => ({}),
+  data: () => ({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  }),
   created() {},
-  mounted() {},
-  methods: {},
+  mounted() {
+    // this.emailJs = EMAIL_JS.init({
+    //   publicKey: import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY,
+    // })
+  },
+  methods: {
+    async sendMessage() {
+      const { valid } = await this.$refs.form.validate()
+      console.log('valid?', valid)
+      console.log('aa', import.meta.env.VITE_EMAIL_JS_SERVICE_ID)
+      console.log('bb', this.$refs.form)
+
+      if (valid) {
+        const response = await emailJs.sendForm(
+          import.meta.env.VITE_EMAIL_JS_SERVICE_ID,
+          import.meta.env.VITE_EMAIL_JS_TEMPLATE_ID,
+          'form',
+          { publicKey: import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY },
+        )
+
+        console.log('email res:', response)
+      }
+    },
+  },
   computed: {},
   watch: {},
 }
