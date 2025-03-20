@@ -98,8 +98,7 @@
         </section>
 
         <section id="skills">
-          <!-- <h1>Skills</h1> -->
-          <!-- Add your content here -->
+          <AppSkills></AppSkills>
         </section>
 
         <section id="contact">
@@ -113,9 +112,10 @@
 
 <script>
 import AppProjects from './components/AppProjects.vue'
+import AppSkills from './components/AppSkills.vue'
 
 export default {
-  components: { AppProjects },
+  components: { AppProjects, AppSkills },
   data() {
     return {
       isDarkMode: false, // Dark Mode toggle
