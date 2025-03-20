@@ -39,7 +39,11 @@
     <!-- Main Content -->
     <v-main>
       <v-container>
-        <section id="about" class="mt-10 ml-10 d-flex flex-column justify-start">
+        <section
+          id="about"
+          class="mt-10 ml-10 d-flex flex-column justify-start"
+          style="height: 100vh"
+        >
           <div class="text-h2">Hi,</div>
           <div class="text-h2">I'm Adise</div>
           <div class="intro-title text-h3 mt-5">
@@ -55,13 +59,13 @@
             appealing, with a focus on creating exceptional user experiences
           </div>
 
-          <v-row class="d-flex justify-center mt-8">
+          <v-row class="d-flex justify-center mt-7">
             <v-col cols="auto">
               <v-btn class="mx-2 rounded-xl" color="black" size="large">View Projucts</v-btn>
               <v-btn class="mx-2 rounded-xl" variant="outlined" size="large">Contact Me</v-btn>
             </v-col>
           </v-row>
-          <v-row class="d-flex justify-center mt-10">
+          <v-row class="d-flex justify-center mt-5">
             <v-col cols="auto">
               <v-icon class="scroll-arrow" size="x-large"> mdi-arrow-down </v-icon>
             </v-col>
@@ -69,6 +73,7 @@
         </section>
 
         <section id="projects">
+          <AppProjects></AppProjects>
           <!-- <h1>Projects</h1> -->
           <!-- Add your content here -->
         </section>
@@ -88,7 +93,10 @@
 </template>
 
 <script>
+import AppProjects from './components/AppProjects.vue'
+
 export default {
+  components: { AppProjects },
   data() {
     return {
       darkMode: false, // Dark Mode toggle
