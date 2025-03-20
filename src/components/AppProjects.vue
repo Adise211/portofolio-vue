@@ -1,12 +1,13 @@
 <template>
-  <v-container fluid class="fill-height">
+  <v-container fluid class="fill-height" :class="{ 'mb-16': isMobile }">
     <v-row class="align-center justify-center fill-height">
       <template v-for="(item, i) in projects" :key="i">
         <v-col cols="12" md="6">
           <v-hover v-slot="{ isHovering, props }">
             <v-card
               :class="{ 'on-hover': isHovering, 'bg-grey-lighten-3': isDarkMode }"
-              :elevation="isHovering ? 12 : 2"
+              :elevation="isMobile ? (isHovering ? 12 : 2) : 5"
+              :height="isMobile ? '130vh' : ''"
               v-bind="props"
             >
               <v-img :src="item.img" height="250px" max-height="250px" cover> </v-img>
@@ -45,6 +46,10 @@ export default {
   components: {},
   props: {
     isDarkMode: {
+      type: Boolean,
+      default: false,
+    },
+    isMobile: {
       type: Boolean,
       default: false,
     },

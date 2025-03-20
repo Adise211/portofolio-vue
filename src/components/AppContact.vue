@@ -1,26 +1,30 @@
 <template>
-  <v-container fluid style="height: 100vh">
+  <v-container fluid style="height: 100vh" :class="{ 'mt-16': isMobile }">
     <v-row class="align-center justify-center fill-height">
       <!-- Send Email -->
       <v-col>
-        <v-card elevation="5" :class="{ 'bg-grey-lighten-3': isDarkMode }">
+        <v-card
+          elevation="5"
+          :class="{ 'bg-grey-lighten-3': isDarkMode }"
+          :height="isMobile ? '108vh' : ''"
+        >
           <v-card-title class="text-h5 mb-5 font-weight-bold">Send Me A Message</v-card-title>
           <v-card-text style="height: 70vh">
             <v-row>
-              <v-col>
+              <v-col cols="12" md="6">
                 <v-text-field label="Your Name" variant="outlined"></v-text-field>
               </v-col>
-              <v-col>
+              <v-col cols="12" md="6">
                 <v-text-field label="Email" variant="outlined"></v-text-field>
               </v-col>
             </v-row>
             <v-row>
-              <v-col cols="10">
+              <v-col cols="12" md="10">
                 <v-text-field label="Subject" variant="outlined"></v-text-field>
               </v-col>
             </v-row>
             <v-row>
-              <v-col cols="10">
+              <v-col cols="12" md="10">
                 <v-textarea label="Your message here..." variant="outlined"></v-textarea>
               </v-col>
             </v-row>
@@ -98,6 +102,10 @@ export default {
   components: {},
   props: {
     isDarkMode: {
+      type: Boolean,
+      default: false,
+    },
+    isMobile: {
       type: Boolean,
       default: false,
     },

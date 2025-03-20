@@ -1,7 +1,7 @@
 <template>
   <v-app :theme="isDarkMode ? 'dark' : 'light'">
     <!-- Drawer for Mobile View -->
-    <v-navigation-drawer app permanent>
+    <v-navigation-drawer v-if="!isMobile" app permanent>
       <v-list dense>
         <v-list-item height="35vh" class="d-flex align-center justify-center">
           <v-img width="300%" height="300%" cover :src="profilePhoto" rounded="circle"></v-img>
@@ -50,12 +50,13 @@
       <v-container>
         <section
           id="about"
-          class="mt-10 ml-10 d-flex flex-column justify-start"
+          class="ml-10 d-flex flex-column justify-start"
+          :class="[!isMobile ? 'mt-10' : 'mt-2']"
           style="height: 100vh"
         >
           <div class="text-h2">Hi,</div>
           <div class="text-h2">I'm Adise</div>
-          <div class="intro-title text-h3 mt-5">
+          <div v-if="!isMobile" class="intro-title text-h3 mt-5">
             <div class="intro-title-wrapper text-light-green">
               <div className="intro-title-item">Full Stack Developer</div>
               <div className="intro-title-item">Web Developer</div>
@@ -63,15 +64,19 @@
               <div className="intro-title-item">Backend Developer</div>
             </div>
           </div>
-          <div class="into-description text-h5 pt-8 mt-16 text-center w-75 align-self-center">
+          <div
+            class="into-description text-h5 text-center w-75 align-self-center"
+            :class="!isMobile ? 'pt-8 mt-16' : 'mt-8'"
+          >
             I develop and design applications that are intuitive, functional, and visually
             appealing, with a focus on creating exceptional user experiences
           </div>
 
           <v-row class="d-flex justify-center mt-7">
-            <v-col cols="auto">
+            <v-col cols="12" md="auto" :class="{ 'text-center': isMobile }">
               <v-btn
                 class="mx-2 rounded-xl"
+                :class="{ 'mb-3': isMobile }"
                 :color="isDarkMode ? 'light-green' : 'black'"
                 size="large"
                 @click="scrollToSection('projects')"
@@ -86,7 +91,7 @@
               >
             </v-col>
           </v-row>
-          <v-row class="d-flex justify-center mt-5">
+          <v-row v-if="!isMobile" class="d-flex justify-center mt-5">
             <v-col cols="auto">
               <v-icon class="scroll-arrow" size="x-large"> mdi-arrow-down </v-icon>
             </v-col>
@@ -94,15 +99,15 @@
         </section>
 
         <section id="projects">
-          <AppProjects :isDarkMode="isDarkMode"></AppProjects>
+          <AppProjects :isDarkMode="isDarkMode" :isMobile="isMobile"></AppProjects>
         </section>
 
         <section id="skills">
-          <AppSkills></AppSkills>
+          <AppSkills :isMobile="isMobile"></AppSkills>
         </section>
 
         <section id="contact">
-          <AppContact :isDarkMode="isDarkMode"></AppContact>
+          <AppContact :isDarkMode="isDarkMode" :isMobile="isMobile"></AppContact>
         </section>
       </v-container>
     </v-main>
@@ -140,6 +145,9 @@ export default {
     },
   },
   computed: {
+    isMobile() {
+      return this.$vuetify.display.mobile
+    },
     profilePhoto() {
       return 'images/profile_photo.png'
     },

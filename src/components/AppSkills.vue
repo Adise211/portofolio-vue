@@ -1,10 +1,15 @@
 <template>
-  <v-container fluid style="height: 100vh">
+  <v-container fluid :style="{ height: containerHeight }">
     <v-row class="align-center justify-center fill-height">
       <template v-for="(group, i) in skillGroups" :key="i">
         <v-col cols="12" md="4">
           <v-hover v-slot="{ isHovering, props }">
-            <v-card :elevation="isHovering ? 12 : 5" v-bind="props" class="bg-grey-lighten-3">
+            <v-card
+              :elevation="isHovering ? 12 : 5"
+              v-bind="props"
+              class="bg-grey-lighten-3"
+              :height="isMobile ? '75vh' : ''"
+            >
               <v-card-title class="text-center">
                 {{ group.groupTitle }}
               </v-card-title>
@@ -39,7 +44,12 @@
 <script>
 export default {
   components: {},
-  props: {},
+  props: {
+    isMobile: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data: () => ({}),
   created() {},
   mounted() {},
@@ -83,6 +93,9 @@ export default {
         },
       ]
     },
+    containerHeight() {
+      return !this.isMobile ? '100vh' : '250vh'
+    },
   },
   watch: {},
 }
@@ -92,4 +105,12 @@ export default {
 .test {
   color: yellowgreen;
 }
+/* 
+.height-for-mobile {
+he
+}
+
+.height-for-desktop {
+
+} */
 </style>
