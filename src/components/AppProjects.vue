@@ -5,7 +5,7 @@
         <v-col cols="12" md="6">
           <v-hover v-slot="{ isHovering, props }">
             <v-card
-              :class="{ 'on-hover': isHovering }"
+              :class="{ 'on-hover': isHovering, 'bg-grey-lighten-3': isDarkMode }"
               :elevation="isHovering ? 12 : 2"
               v-bind="props"
             >
@@ -43,7 +43,12 @@
 <script>
 export default {
   components: {},
-  props: {},
+  props: {
+    isDarkMode: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data: () => ({}),
   created() {},
   mounted() {},
