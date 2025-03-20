@@ -50,11 +50,22 @@
               <div className="intro-title-item">Backend Developer</div>
             </div>
           </div>
-          <div class="into-description text-h5 pt-10 mt-16 text-center w-75 align-self-center">
+          <div class="into-description text-h5 pt-8 mt-16 text-center w-75 align-self-center">
             I develop and design applications that are intuitive, functional, and visually
             appealing, with a focus on creating exceptional user experiences
           </div>
-          <!-- Add your content here -->
+
+          <v-row class="d-flex justify-center mt-8">
+            <v-col cols="auto">
+              <v-btn class="mx-2 rounded-xl" color="black" size="large">View Projucts</v-btn>
+              <v-btn class="mx-2 rounded-xl" variant="outlined" size="large">Contact Me</v-btn>
+            </v-col>
+          </v-row>
+          <v-row class="d-flex justify-center mt-10">
+            <v-col cols="auto">
+              <v-icon class="scroll-arrow" size="x-large"> mdi-arrow-down </v-icon>
+            </v-col>
+          </v-row>
         </section>
 
         <section id="projects">
@@ -145,17 +156,27 @@ export default {
   align-items: center;
 }
 
-/* You can customize your App Bar styling here */
-.v-toolbar-title {
-  font-weight: bold;
-}
-
-.v-btn {
-  color: #fff;
-}
-
 .nav-item {
   text-align: center;
   height: 10vh;
+}
+
+.scroll-arrow {
+  animation: bounce 1.5s infinite;
+  cursor: pointer;
+  color: rgb(156 163 175 / 1) !important;
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 </style>
