@@ -94,7 +94,7 @@
         </section>
 
         <section id="projects">
-          <AppProjects></AppProjects>
+          <AppProjects :isDarkMode="isDarkMode"></AppProjects>
         </section>
 
         <section id="skills">
@@ -102,8 +102,7 @@
         </section>
 
         <section id="contact">
-          <!-- <h1>Contact</h1> -->
-          <!-- Add your content here -->
+          <AppContact :isDarkMode="isDarkMode"></AppContact>
         </section>
       </v-container>
     </v-main>
@@ -113,9 +112,10 @@
 <script>
 import AppProjects from './components/AppProjects.vue'
 import AppSkills from './components/AppSkills.vue'
+import AppContact from './components/AppContact.vue'
 
 export default {
-  components: { AppProjects, AppSkills },
+  components: { AppProjects, AppSkills, AppContact },
   data() {
     return {
       isDarkMode: false, // Dark Mode toggle
