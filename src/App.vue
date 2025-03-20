@@ -3,21 +3,29 @@
     <!-- Drawer for Mobile View -->
     <v-navigation-drawer app permanent>
       <v-list dense>
-        <v-list-item>
-          <div>Adise Mamoye</div>
+        <v-list-item height="30vh" class="d-flex align-center justify-center">
+          <div class="text-h5">Adise Mamoye</div>
         </v-list-item>
-        <v-list-item @click="scrollToSection('about')">
+        <v-divider></v-divider>
+        <v-list-item @click="scrollToSection('about')" class="nav-item">
           <v-list-item-title>About</v-list-item-title>
         </v-list-item>
-        <v-list-item @click="scrollToSection('projects')">
+        <v-divider></v-divider>
+
+        <v-list-item @click="scrollToSection('projects')" class="nav-item">
           <v-list-item-title>Projects</v-list-item-title>
         </v-list-item>
-        <v-list-item @click="scrollToSection('skills')">
-          <v-list-item-title>Skills</v-list-item-title>
+        <v-divider></v-divider>
+
+        <v-list-item @click="scrollToSection('skills')" class="nav-item">
+          <v-list-item-title>My Skills</v-list-item-title>
         </v-list-item>
-        <v-list-item @click="scrollToSection('contact')">
+        <v-divider></v-divider>
+
+        <v-list-item @click="scrollToSection('contact')" class="nav-item">
           <v-list-item-title>Contact</v-list-item-title>
         </v-list-item>
+        <v-divider></v-divider>
       </v-list>
     </v-navigation-drawer>
 
@@ -77,5 +85,10 @@ export default {
 
 .v-btn {
   color: #fff;
+}
+
+.nav-item {
+  text-align: center;
+  height: 10vh;
 }
 </style>
