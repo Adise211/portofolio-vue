@@ -123,7 +123,7 @@ export default {
   components: { AppProjects, AppSkills, AppContact },
   data() {
     return {
-      isDarkMode: true, // Dark Mode toggle
+      isDarkMode: false, // Dark Mode toggle
     }
   },
   mounted() {},
