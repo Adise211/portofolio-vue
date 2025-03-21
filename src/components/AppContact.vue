@@ -127,10 +127,7 @@
           <v-card-title class="text-h5 font-weight-bold mb-5">Availability</v-card-title>
 
           <v-card-text style="height: 17vh">
-            <span
-              >Currently available for freelance projects and full-time positions
-              opportunities.</span
-            >
+            <span>Currently available for freelance projects and full-time positions.</span>
             <p class="mt-5 font-weight-bold">
               Response time: <span class="text-light-green font-weight-medium">24-48 hours</span>
             </p>

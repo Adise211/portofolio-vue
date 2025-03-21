@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="fill-height" :class="{ 'mb-16': isMobile }">
+  <v-container fluid style="height: 100vh" :class="{ 'mb-16': isMobile }">
     <v-row class="align-center justify-center fill-height">
       <template v-for="(item, i) in projects" :key="i">
         <v-col cols="12" md="6">
@@ -78,14 +78,14 @@ export default {
             web: 'https://salespro-45922.web.app/',
           },
         },
-        // {
-        //   title: 'Coming Soon!',
-        //   text: `Stay tuned...`,
-        //   description:
-        //     'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad commodi blanditiis dolor praesentium incidunt expedita nulla officia quibusdam, dolorum alias? Corporis voluptatem modi expedita iusto quos molestiae dolores ex libero.',
-        //   img: 'https://cdn.vuetifyjs.com/docs/images/cards/hands.jpg',
-        //   tools: ['Javascript'],
-        // },
+        {
+          title: 'Coming Soon!',
+          text: `Stay tuned...`,
+          description:
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad commodi blanditiis dolor praesentium incidunt expedita nulla officia quibusdam, dolorum alias? Corporis voluptatem modi expedita iusto quos molestiae dolores ex libero.',
+          img: 'https://cdn.vuetifyjs.com/docs/images/cards/hands.jpg',
+          tools: ['Javascript'],
+        },
       ]
     },
     transparentColor() {

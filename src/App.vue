@@ -12,8 +12,8 @@
           <v-list-item-title>About</v-list-item-title>
         </v-list-item>
         <v-divider></v-divider>
-        <v-list-item @click="scrollToSection('projects')" class="nav-item">
-          <v-list-item-title>Projects</v-list-item-title>
+        <v-list-item @click="scrollToSection('experience')" class="nav-item">
+          <v-list-item-title>Experience & Projects</v-list-item-title>
         </v-list-item>
         <v-divider></v-divider>
 
@@ -98,10 +98,13 @@
           </v-row>
         </section>
 
+        <section id="experience">
+          <AppExperience :isDarkMode="isDarkMode" :isMobile="isMobile"></AppExperience>
+        </section>
+
         <section id="projects">
           <AppProjects :isDarkMode="isDarkMode" :isMobile="isMobile"></AppProjects>
         </section>
-
         <section id="skills">
           <AppSkills :isMobile="isMobile"></AppSkills>
         </section>
@@ -115,12 +118,13 @@
 </template>
 
 <script>
+import AppExperience from './components/AppExperience.vue'
 import AppProjects from './components/AppProjects.vue'
 import AppSkills from './components/AppSkills.vue'
 import AppContact from './components/AppContact.vue'
 
 export default {
-  components: { AppProjects, AppSkills, AppContact },
+  components: { AppExperience, AppProjects, AppSkills, AppContact },
   data() {
     return {
       isDarkMode: false, // Dark Mode toggle
