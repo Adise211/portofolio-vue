@@ -10,7 +10,7 @@
           :min-height="isMobile ? '85vh' : ''"
         >
           <v-card-title class="text-h5 mb-5 font-weight-bold">Send Me A Message</v-card-title>
-          <v-card-text style="height: 70vh">
+          <v-card-text>
             <v-form ref="form" id="form">
               <v-row>
                 <v-col cols="12" md="6">
@@ -19,7 +19,9 @@
                     label="Your Name"
                     variant="outlined"
                     type="text"
-                    name="user_nam"
+                    name="user_name"
+                    :rules="[formRules.required]"
+                    validate-on="submit"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" md="6">
@@ -29,6 +31,8 @@
                     variant="outlined"
                     type="email"
                     name="user_email"
+                    :rules="[formRules.required]"
+                    validate-on="submit"
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -39,7 +43,9 @@
                     label="Subject"
                     variant="outlined"
                     type="text"
-                    name="title"
+                    name="user_subject"
+                    :rules="[formRules.required]"
+                    validate-on="submit"
                   ></v-text-field>
                 </v-col>
               </v-row>
@@ -50,20 +56,32 @@
                     label="Your message here..."
                     variant="outlined"
                     name="message"
+                    :rules="[formRules.required]"
+                    validate-on="submit"
                   ></v-textarea>
                 </v-col>
               </v-row>
-              <v-row>
-                <v-btn
-                  class="mx-2 rounded-xl mt-5 ml-3"
-                  :color="isDarkMode ? 'light-green' : 'black'"
-                  size="large"
-                  @click.prevent="sendMessage"
-                  >Send Message</v-btn
-                >
-              </v-row>
             </v-form>
           </v-card-text>
+          <v-card-actions class="align-end mb-3">
+            <v-btn
+              class="mx-2 rounded-xl mt-5 ml-3"
+              :color="isDarkMode ? 'light-green' : 'black'"
+              size="large"
+              @click.prevent="sendMessage"
+              variant="flat"
+              >Send Message</v-btn
+            >
+            <span>
+              <v-alert
+                v-if="alertType || alertMessage"
+                :text="alertMessage"
+                :type="alertType"
+                variant="tonal"
+                density="compact"
+              ></v-alert>
+            </span>
+          </v-card-actions>
         </v-card>
       </v-col>
       <!-- Personal Info -->
@@ -143,20 +161,14 @@ export default {
     email: '',
     subject: '',
     message: '',
+    alertType: '',
+    alertMessage: '',
   }),
   created() {},
-  mounted() {
-    // this.emailJs = EMAIL_JS.init({
-    //   publicKey: import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY,
-    // })
-  },
+  mounted() {},
   methods: {
     async sendMessage() {
       const { valid } = await this.$refs.form.validate()
-      console.log('valid?', valid)
-      console.log('aa', import.meta.env.VITE_EMAIL_JS_SERVICE_ID)
-      console.log('bb', this.$refs.form)
-
       if (valid) {
         const response = await emailJs.sendForm(
           import.meta.env.VITE_EMAIL_JS_SERVICE_ID,
@@ -165,11 +177,26 @@ export default {
           { publicKey: import.meta.env.VITE_EMAIL_JS_PUBLIC_KEY },
         )
 
-        console.log('email res:', response)
+        if (response.status == 200) {
+          // success message
+          this.alertType = 'success'
+          this.alertMessage = 'message was sent'
+          this.$refs.form.reset()
+        } else {
+          //error message
+          this.alertType = 'error'
+          this.alertMessage = 'something went wrong'
+        }
       }
     },
   },
-  computed: {},
+  computed: {
+    formRules() {
+      return {
+        required: (value) => !!value || 'Required',
+      }
+    },
+  },
   watch: {},
 }
 </script>
