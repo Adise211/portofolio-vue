@@ -31,7 +31,7 @@
                     variant="outlined"
                     type="email"
                     name="user_email"
-                    :rules="[formRules.required]"
+                    :rules="[formRules.required, formRules.emailMatch]"
                     validate-on="submit"
                   ></v-text-field>
                 </v-col>
@@ -192,8 +192,11 @@ export default {
   },
   computed: {
     formRules() {
+      const emailRegex = new RegExp(/^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/)
+
       return {
         required: (value) => !!value || 'Required',
+        emailMatch: (value) => emailRegex.test(value) || 'Invalid e-mail',
       }
     },
   },
