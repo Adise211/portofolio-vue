@@ -1,9 +1,9 @@
 <template>
-  <v-container fluid class="mb-16">
-    <v-timeline class="align-start" truncate-line="end">
+  <v-container fluid class="pa-0">
+    <v-timeline v-if="!isMobile" class="align-start" truncate-line="end">
       <v-timeline-item v-for="(item, i) in items" :key="i" :dot-color="item.color" fill-dot>
         <v-card elevation="5" :class="{ 'bg-grey-lighten-3': isDarkMode }">
-          <v-card-title class="d-flex align-center">
+          <v-card-title class="d-flex align-center flex-wrap">
             <span>{{ item.title }}</span>
             <v-spacer></v-spacer>
             <span class="text-subtitle-2">{{ item.from }} - {{ item.to }}</span>
@@ -21,6 +21,27 @@
         </v-card>
       </v-timeline-item>
     </v-timeline>
+    <div v-else class="d-flex flex-column justify-space-around">
+      <template v-for="(item, i) in items" :key="i">
+        <v-card elevation="5" :class="[{ 'bg-grey-lighten-3': isDarkMode }]" class="mb-15">
+          <v-card-title class="d-flex align-center flex-wrap">
+            <span>{{ item.title }}</span>
+            <v-spacer></v-spacer>
+            <span class="text-subtitle-2">{{ item.from }} - {{ item.to }}</span>
+          </v-card-title>
+          <v-card-subtitle>{{ item.subtitle }}</v-card-subtitle>
+          <v-card-text>
+            <v-list
+              v-for="(desc, index) in item.description"
+              :key="index"
+              :class="{ 'bg-grey-lighten-3': isDarkMode }"
+            >
+              <v-list-item>* {{ desc.point }}</v-list-item>
+            </v-list>
+          </v-card-text>
+        </v-card>
+      </template>
+    </div>
   </v-container>
 </template>
 

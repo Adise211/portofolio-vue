@@ -51,11 +51,11 @@
     <v-main>
       <v-container class="fill-height d-block">
         <v-window v-model="sectionId" class="fill-height">
-          <v-window-item :value="sections.about">
+          <v-window-item :value="sections.about" class="fill-height">
             <section
               id="about"
-              class="ml-10 d-flex flex-column justify-start"
-              :class="[!isMobile ? 'mt-10' : 'mt-2']"
+              class="d-flex flex-column justify-start fill-height"
+              :class="[!isMobile ? 'mt-10 ml-10 ' : 'mt-2']"
             >
               <div class="text-h2">Hi,</div>
               <div class="text-h2">I'm Adise</div>
@@ -68,14 +68,14 @@
                 </div>
               </div>
               <div
-                class="into-description text-h5 text-center w-75 align-self-center"
-                :class="!isMobile ? 'pt-8 mt-16' : 'mt-8'"
+                class="into-description text-h5 pt-8 mt-16 text-center align-self-center"
+                :class="!isMobile ? ' w-75' : 'w-100'"
               >
                 I develop and design applications that are intuitive, functional, and visually
                 appealing, with a focus on creating exceptional user experiences
               </div>
 
-              <v-row class="d-flex justify-center mt-7">
+              <v-row class="d-flex justify-center" :class="!isMobile ? 'mt-7' : 'mt-14'">
                 <v-col cols="12" md="auto" :class="{ 'text-center': isMobile }">
                   <v-btn
                     class="mx-2 rounded-xl"
@@ -94,11 +94,11 @@
                   >
                 </v-col>
               </v-row>
-              <!-- <v-row v-if="!isMobile" class="d-flex justify-center mt-5">
+              <v-row v-if="isMobile" class="d-flex justify-center mt-5">
                 <v-col cols="auto">
-                  <v-icon class="scroll-arrow" size="x-large"> mdi-arrow-down </v-icon>
+                  <v-icon class="scroll-arrow" size="x-large"> mdi-arrow-right </v-icon>
                 </v-col>
-              </v-row> -->
+              </v-row>
             </section>
           </v-window-item>
           <v-window-item :value="sections.experience" class="my-auto">
@@ -235,16 +235,26 @@ export default {
   color: rgb(156 163 175 / 1) !important;
 }
 
+.arrow-btn {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.arrow-btn:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+}
 /* Bounce animation */
 @keyframes bounce {
   0% {
-    transform: translateY(0);
+    transform: translateX(0);
   }
   50% {
-    transform: translateY(10px);
+    transform: translateX(15px);
   }
   100% {
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 </style>
