@@ -78,17 +78,16 @@ export default {
             web: 'https://salespro-45922.web.app/',
           },
         },
-        {
-          title: 'Comming Soon!',
-          text: `Stay tuned...`,
-          description:
-            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad commodi blanditiis dolor praesentium incidunt expedita nulla officia quibusdam, dolorum alias? Corporis voluptatem modi expedita iusto quos molestiae dolores ex libero.',
-          img: 'https://cdn.vuetifyjs.com/docs/images/cards/hands.jpg',
-          tools: ['Javascript'],
-        },
+        // {
+        //   title: 'Coming Soon!',
+        //   text: `Stay tuned...`,
+        //   description:
+        //     'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ad commodi blanditiis dolor praesentium incidunt expedita nulla officia quibusdam, dolorum alias? Corporis voluptatem modi expedita iusto quos molestiae dolores ex libero.',
+        //   img: 'https://cdn.vuetifyjs.com/docs/images/cards/hands.jpg',
+        //   tools: ['Javascript'],
+        // },
       ]
     },
-
     transparentColor() {
       return 'rgba(255, 255, 255, 0)'
     },
