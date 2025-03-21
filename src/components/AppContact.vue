@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid style="height: 100vh" :class="{ 'mt-16': isMobile }">
+  <v-container fluid class="fill-height">
     <v-row class="align-center justify-center fill-height">
       <!-- Send Email -->
       <v-col>

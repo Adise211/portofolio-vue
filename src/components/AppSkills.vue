@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid :style="{ height: containerHeight }">
+  <v-container fluid class="fill-height d-block">
     <v-row class="align-center justify-center fill-height">
       <template v-for="(group, i) in skillGroups" :key="i">
         <v-col cols="12" md="4">
@@ -93,9 +93,6 @@ export default {
           ],
         },
       ]
-    },
-    containerHeight() {
-      return !this.isMobile ? '100vh' : '250vh'
     },
   },
   watch: {},
