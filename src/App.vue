@@ -52,54 +52,56 @@
       <v-container class="fill-height d-block">
         <v-window v-model="sectionId" class="fill-height">
           <v-window-item :value="sections.about" class="fill-height">
-            <section
-              id="about"
-              class="d-flex flex-column justify-start fill-height"
-              :class="[!isMobile ? 'mt-10 ml-10 ' : 'mt-2']"
-            >
-              <div class="text-h2">Hi,</div>
-              <div class="text-h2">I'm Adise</div>
-              <div v-if="!isMobile" class="intro-title text-h3 mt-5">
-                <div class="intro-title-wrapper text-light-green">
-                  <div className="intro-title-item">Full Stack Developer</div>
-                  <div className="intro-title-item">Web Developer</div>
-                  <div className="intro-title-item">Frontend Developer</div>
-                  <div className="intro-title-item">Backend Developer</div>
-                </div>
-              </div>
-              <div
-                class="into-description text-h5 pt-8 mt-16 text-center align-self-center"
-                :class="!isMobile ? ' w-75' : 'w-100'"
+            <v-lazy :options="{ threshold: 1 }" transition="slide-x-reverse-transition">
+              <section
+                id="about"
+                class="d-flex flex-column justify-start fill-height mt-10"
+                :class="{ 'ml-10': !isMobile }"
               >
-                I develop and design applications that are intuitive, functional, and visually
-                appealing, with a focus on creating exceptional user experiences
-              </div>
+                <div class="text-h2">Hi,</div>
+                <div class="text-h2">I'm Adise</div>
+                <div v-if="!isMobile" class="intro-title text-h3 mt-5">
+                  <div class="intro-title-wrapper text-light-green">
+                    <div className="intro-title-item">Full Stack Developer</div>
+                    <div className="intro-title-item">Web Developer</div>
+                    <div className="intro-title-item">Frontend Developer</div>
+                    <div className="intro-title-item">Backend Developer</div>
+                  </div>
+                </div>
+                <div
+                  class="into-description text-h5 pt-8 mt-16 text-center align-self-center"
+                  :class="!isMobile ? ' w-75' : 'w-100'"
+                >
+                  I develop and design applications that are intuitive, functional, and visually
+                  appealing, with a focus on creating exceptional user experiences
+                </div>
 
-              <v-row class="d-flex justify-center" :class="!isMobile ? 'mt-7' : 'mt-14'">
-                <v-col cols="12" md="auto" :class="{ 'text-center': isMobile }">
-                  <v-btn
-                    class="mx-2 rounded-xl"
-                    :class="{ 'mb-3': isMobile }"
-                    :color="isDarkMode ? 'light-green' : 'black'"
-                    size="large"
-                    @click="scrollToSection(sections.experience, sections.projects)"
-                    >View Projects</v-btn
-                  >
-                  <v-btn
-                    class="mx-2 rounded-xl"
-                    variant="outlined"
-                    size="large"
-                    @click="scrollToSection(sections.contact)"
-                    >Contact Me</v-btn
-                  >
-                </v-col>
-              </v-row>
-              <v-row v-if="isMobile" class="d-flex justify-center mt-5">
-                <v-col cols="auto">
-                  <v-icon class="scroll-arrow" size="x-large"> mdi-arrow-right </v-icon>
-                </v-col>
-              </v-row>
-            </section>
+                <v-row class="d-flex justify-center" :class="!isMobile ? 'mt-7' : 'mt-14'">
+                  <v-col cols="12" md="auto" :class="{ 'text-center': isMobile }">
+                    <v-btn
+                      class="mx-2 rounded-xl"
+                      :class="{ 'mb-3': isMobile }"
+                      :color="isDarkMode ? 'light-green' : 'black'"
+                      size="large"
+                      @click="scrollToSection(sections.projects)"
+                      >View Projects</v-btn
+                    >
+                    <v-btn
+                      class="mx-2 rounded-xl"
+                      variant="outlined"
+                      size="large"
+                      @click="scrollToSection(sections.contact)"
+                      >Contact Me</v-btn
+                    >
+                  </v-col>
+                </v-row>
+                <v-row v-if="isMobile" class="d-flex justify-center mt-5">
+                  <v-col cols="auto">
+                    <v-icon class="scroll-arrow" size="x-large"> mdi-arrow-right </v-icon>
+                  </v-col>
+                </v-row>
+              </section>
+            </v-lazy>
           </v-window-item>
           <v-window-item :value="sections.experience" class="my-auto">
             <section id="experience">
@@ -150,25 +152,16 @@ export default {
   },
   mounted() {},
   methods: {
-    scrollToSection(section, subSection) {
+    scrollToSection(section) {
       this.sectionId = section
-      console.log('section:', section)
 
-      if (subSection) {
-        console.log("it's project", subSection)
-
-        setTimeout(() => {
-          const element = document.getElementById(subSection)
-          console.log('found element?', element)
-
-          if (element) {
-            window.scrollTo({
-              top: element.offsetTop,
-              behavior: 'smooth',
-            })
-          }
-        }, 2000)
-      }
+      // const element = document.getElementById(subSection)
+      // if (element) {
+      //   window.scrollTo({
+      //     top: element.offsetTop,
+      //     behavior: 'smooth',
+      //   })
+      // }
     },
     goToLinkedIn() {
       window.open('https://www.linkedin.com/in/adise-mamoye-15876a240')

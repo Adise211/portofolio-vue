@@ -1,8 +1,11 @@
 <template>
   <v-container fluid class="fill-height">
+    <v-row v-if="isMobile" class="page-title text-h4 mb-15 mt-2">
+      <span class="mx-auto">Contact</span>
+    </v-row>
     <v-row class="align-center justify-center fill-height">
       <!-- Send Email -->
-      <v-col>
+      <v-col cols="12" md="8">
         <v-card
           elevation="5"
           :class="{ 'bg-grey-lighten-3': isDarkMode }"

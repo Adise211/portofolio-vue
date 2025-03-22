@@ -1,5 +1,8 @@
 <template>
   <v-container fluid class="fill-height d-block">
+    <v-row v-if="isMobile" class="page-title text-h4 mb-15 mt-2">
+      <span class="mx-auto">Skills</span>
+    </v-row>
     <v-row class="align-center justify-center fill-height">
       <template v-for="(group, i) in skillGroups" :key="i">
         <v-col cols="12" md="4">

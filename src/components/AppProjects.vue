@@ -1,5 +1,8 @@
 <template>
   <v-container fluid class="fill-height">
+    <v-row v-if="isMobile" class="page-title text-h4 mb-15 mt-2">
+      <span class="mx-auto">Contact</span>
+    </v-row>
     <v-row class="align-center justify-center fill-height">
       <template v-for="(item, i) in projects" :key="i">
         <v-col cols="12" md="6">
@@ -67,7 +70,7 @@ export default {
     projects() {
       return [
         {
-          title: 'Manage Customers CRM Platform',
+          title: 'Customer Relationship Management Platform',
           text: `SalesPro`,
           description:
             'A serverless CRM platform aimed at helping businesses manage customer data and sales. Inspired by Salesforce, the app is built with Vue 3 and utilizes Vuetify for UI components and Firebase for authentication, database and hosting.',
