@@ -52,7 +52,11 @@
       <v-container class="fill-height d-block">
         <v-window v-model="sectionId" class="fill-height">
           <v-window-item :value="sections.about" class="fill-height">
-            <v-lazy :options="{ threshold: 1 }" transition="slide-x-reverse-transition">
+            <v-lazy
+              :options="{ threshold: 1 }"
+              transition="slide-x-reverse-transition"
+              class="fill-height"
+            >
               <section
                 id="about"
                 class="d-flex flex-column justify-start fill-height mt-10"
@@ -95,8 +99,8 @@
                     >
                   </v-col>
                 </v-row>
-                <v-row v-if="isMobile" class="d-flex justify-center mt-5">
-                  <v-col cols="auto">
+                <v-row v-if="isMobile" class="text-center">
+                  <v-col cols="12">
                     <v-icon class="scroll-arrow" size="x-large"> mdi-arrow-right </v-icon>
                   </v-col>
                 </v-row>

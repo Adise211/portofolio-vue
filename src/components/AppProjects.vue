@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="fill-height">
     <v-row v-if="isMobile" class="page-title text-h4 mb-15 mt-2">
-      <span class="mx-auto">Contact</span>
+      <span class="mx-auto">Projects</span>
     </v-row>
     <v-row class="align-center justify-center fill-height">
       <template v-for="(item, i) in projects" :key="i">
